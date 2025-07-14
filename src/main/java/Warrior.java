@@ -11,19 +11,12 @@ public class Warrior extends Character {
     }
 
     public void performHeavyAttack(Character target) {
-        if(target == null){
-            throw new InvalidTargetException();
-        }
-
-        if (!target.isAlive()) {
-            throw new CharacterAlreadyDeadException(target.name + " ya está muerto");
-        }
-
+        super.validateTarget(target);
         target.receiveDamage(this.strength);
     }
 
     public void enterBerserkMode() {
-        if(this.status == Status.FURIOUS){
+        if (this.status == Status.FURIOUS) {
             throw new BerserkAlreadyActiveException(this.name + " ya está en modo furioso");
         }
 
