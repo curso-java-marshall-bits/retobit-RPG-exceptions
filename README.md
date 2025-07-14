@@ -26,7 +26,7 @@ Ahora hay que descargarse el proyecto en tu computadora.
 ### 1. Asegúrate de que estás en la URL de TU copia del repositorio
    
 
-Si la URL es esta: https://github.com/curso-java-marshall-bits/retobit-RPG-excepciones **NO ES CORRECTO**.
+Si la URL es esta: https://github.com/curso-java-marshall-bits/retobit-RPG-exceptions **NO ES CORRECTO**.
     
 
 Donde aparece 'curso-java-marshall-bits' debería aparecer tu nombre de usuario. Haz click en tu perfil y mira tus repositorios para comprobar si hiciste el fork. En caso contrario vuelve al paso anterior. 
