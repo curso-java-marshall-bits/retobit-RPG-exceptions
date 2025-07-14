@@ -62,6 +62,8 @@ Nos indica que nuestra tarea es generar todas estas excepciones para cada una de
 
 ## Parte 2: Crear y añadir las excepciones
 
+Para poder ver todos los tests te recomiendo que crees todas las excepciones antes de añadirlas a los métodos.
+
 1. **BerserkAlreadyActiveException** en Warrior: Esta excepción se debe lanzar cuando se trata de ejecutar el método *enterBerserkMode*, pero el warrior ya está en ese estado. El mensaje de la excepción deberá ser exactamente: *nombreDelWarrior ya está en modo furioso*. Sé que parece obvio 😅, pero allá donde pone *nombreDelWarrior* deberá salir el nombre del warrior. 
 
 2. **InsufficientManaException** en Mage: Cuando queramos lanzar un hechizo con *castSpell* y no tengamos suficiente maná, lanzaremos la excepción con el mensaje: *nombreDelMago no tiene maná suficiente* 
