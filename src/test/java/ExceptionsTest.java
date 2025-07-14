@@ -99,7 +99,7 @@ public class ExceptionsTest {
     @Test
     @Order(5)
     @DisplayName("Mage: heal() lanza InvalidTargetException para objetivo nulo")
-    void testHealThrowsInvalidTargetForNull() {
+    void testCastSpellThrowsInvalidTargetForNull() {
         Mage healer = new Mage("Healer", 100, 50);
 
         InvalidTargetException thrown = assertThrows(
