@@ -1,4 +1,4 @@
-# RetoBit: RPG: Control de errores 🙈
+# RetoBit: Control de errores en el RPG 🙈
 
 Seguimos con el RetoBit del RPG. Esta vez añadiremos excepciones para que nuestro juego sea más fiable y no se rompa todo ante cualquier pequeño error.
 
