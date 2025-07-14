@@ -99,7 +99,7 @@ public class ExceptionsTest {
     @Test
     @Order(5)
     @DisplayName("Mage: heal() lanza InvalidTargetException para objetivo nulo")
-    void testHealThrowsInvalidTargetForNull() {
+    void testCastSpellThrowsInvalidTargetForNull() {
         Mage healer = new Mage("Healer", 100, 50);
 
         InvalidTargetException thrown = assertThrows(
@@ -112,7 +112,21 @@ public class ExceptionsTest {
 
     @Test
     @Order(6)
-    @DisplayName("Mage: castSpell() (vía receiveDamage) lanza CharacterAlreadyDeadException para objetivo muerto")
+    @DisplayName("Mage: castSpell() lanza InvalidTargetException para objetivo nulo")
+    void testHealThrowsInvalidTargetForNull() {
+        Mage caster = new Mage("Caster", 100, 50);
+
+        InvalidTargetException thrown = assertThrows(
+                InvalidTargetException.class,
+                () -> caster.castSpell(null),
+                "Debería lanzar InvalidTargetException para un objetivo nulo en castSpell()"
+        );
+        assertEquals("No se puede realizar una acción a un objetivo nulo", thrown.getMessage());
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("Mage: castSpell() lanza CharacterAlreadyDeadException para objetivo muerto")
     void testCastSpellThrowsCharacterAlreadyDeadForDeadTarget() {
         Mage mage = new Mage("Caster", 100, 50);
         ConcreteCharacterForTesting deadTarget = new ConcreteCharacterForTesting("Corpse", 0);
@@ -126,7 +140,7 @@ public class ExceptionsTest {
     }
 
     @Test
-    @Order(7)
+    @Order(8)
     @DisplayName("Mage: heal() lanza CharacterAlreadyDeadException si se intenta curar un objetivo muerto")
     void testHealThrowsCharacterAlreadyDeadForDeadTarget() {
         Mage healer = new Mage("Healer", 100, 50);
@@ -141,8 +155,8 @@ public class ExceptionsTest {
     }
 
     @Test
-    @Order(8)
-    @DisplayName("Warrior: performHeavyAttack() (vía receiveDamage) lanza CharacterAlreadyDeadException para objetivo muerto")
+    @Order(9)
+    @DisplayName("Warrior: performHeavyAttack() lanza CharacterAlreadyDeadException para objetivo muerto")
     void testPerformHeavyAttackThrowsCharacterAlreadyDeadForDeadTarget() {
         Warrior warrior = new Warrior("Attacker", 100, 20);
         ConcreteCharacterForTesting deadTarget = new ConcreteCharacterForTesting("Corpse", 0);
