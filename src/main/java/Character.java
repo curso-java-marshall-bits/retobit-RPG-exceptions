@@ -21,22 +21,35 @@ public abstract class Character implements Combatant {
     }
 
     @Override
-    public boolean isAlive() {
+    public boolean isAlive() throws CharacterAlreadyDeadException {
+        if (this.status == Status.DEAD) {
+            throw new CharacterAlreadyDeadException(this.name + " ya está muerto");
+        }
         return this.health > 0;
     }
 
     @Override
-    public int getCurrentHealth() {
+    public int getCurrentHealth() throws CharacterAlreadyDeadException {
+        if (this.status == Status.DEAD) {
+            throw new CharacterAlreadyDeadException(this.name + " ya está muerto");
+        }
+
         return this.health;
     }
 
     @Override
-    public String getName() {
+    public String getName() throws CharacterAlreadyDeadException {
+        if (this.status == Status.DEAD) {
+            throw new CharacterAlreadyDeadException(this.name + " ya está muerto");
+        }
         return this.name;
     }
 
     @Override
-    public String getStatus() {
+    public String getStatus() throws CharacterAlreadyDeadException {
+        if (this.status == Status.DEAD) {
+            throw new CharacterAlreadyDeadException(this.name + " ya está muerto");
+        }
         return this.status.toString();
     }
 }

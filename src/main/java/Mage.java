@@ -11,16 +11,35 @@ public class Mage extends Character {
         return this.mana;
     }
 
-    public void castSpell(Character target) {
-
-        if (this.mana - 10 >= 0) {
+    public void castSpell(Character target) throws RuntimeException {
+            if(target == null){
+                throw new InvalidTargetException("No se puede realizar una acción a un objetivo nulo");
+            }
+            target.getStatus();
+            if(!target.isAlive()){
+                throw new CharacterAlreadyDeadException(target.name + " ya está muerto");
+            }
+            if(this.mana - 10 <= 0){
+                throw new InsufficientManaException(this.name + " no tiene maná suficiente");
+            }
             this.mana -= 10;
             target.receiveDamage(20);
             target.status = Status.POISONED;
-        }
+
     }
 
-    public void heal(Character target) {
+
+
+    public void heal(Character target) throws InvalidTargetException {
+        if(target == null){
+            throw new InvalidTargetException("No se puede realizar una acción a un objetivo nulo");
+        }
+        if(!target.isAlive()){
+            throw new CharacterAlreadyDeadException(target.getName() + " ya está muerto");
+        }
+        if(this.mana - 15 <= 0){
+            throw new InsufficientManaException(this.name + " no tiene maná suficiente");
+        }
             this.mana -= 15;
             target.health += 20;
     }
