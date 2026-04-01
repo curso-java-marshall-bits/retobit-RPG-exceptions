@@ -11,7 +11,7 @@ public class ExceptionsTest {
         }
 
         @Override
-        public void receiveDamage(int damage) {
+        public void receiveDamage(int damage) throws CharacterAlreadyDeadException {
             super.receiveDamage(damage);
         }
 
@@ -39,7 +39,7 @@ public class ExceptionsTest {
     @Test
     @Order(1)
     @DisplayName("Warrior: enterBerserkMode() lanza BerserkAlreadyActiveException si ya está furioso")
-    void testEnterBerserkModeThrowsExceptionWhenAlreadyFurious() {
+    void testEnterBerserkModeThrowsExceptionWhenAlreadyFurious() throws BerserkAlreadyActiveException {
         Warrior warrior = new Warrior("Rager", 100, 20);
         warrior.enterBerserkMode();
 
@@ -69,7 +69,7 @@ public class ExceptionsTest {
     @Test
     @Order(3)
     @DisplayName("Mage: heal() lanza InsufficientManaException si el maná es insuficiente para curar")
-    void testHealThrowsInsufficientManaException() {
+    void testHealThrowsInsufficientManaException() throws CharacterAlreadyDeadException {
         Mage healer = new Mage("LowManaHealer", 100, 5);
         Mage injuredAlly = new Mage("Injured", 30, 0);
         injuredAlly.receiveDamage(10);
