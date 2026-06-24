@@ -12,10 +12,22 @@ public class Warrior extends Character {
 
     public void performHeavyAttack(Character target) {
 
+    	if(target == null)
+    	{
+    		throw new InvalidTargetException("No se puede realizar una acción a un objetivo nulo");
+    	}
+    	
+    	if(!target.isAlive()) {
+    		throw new CharacterAlreadyDeadException(target.name + " ya está muerto");
+    	}
+    	
         target.receiveDamage(this.strength);
     }
 
     public void enterBerserkMode() {
+    	if (this.status == status.FURIOUS) {
+    		throw new BerserkAlreadyActiveException(this.name + " ya está en modo furioso");
+    	}
         this.status = Status.FURIOUS;
     }
 }
